@@ -1,0 +1,11 @@
+@startuml
+class Nave
+class Propulsor
+class Proyectil
+class Escudo
+class Puntaje
+Class Vida
+Class Personaje
+Nave --|> Personaje
+
+@enduml
