@@ -1,11 +1,62 @@
 @startuml
+class Personaje
 class Nave
-class Propulsor
+class Alien
+class AlienGrande
+class AlienPequeño
 class Proyectil
+class BalaJugador
+class BalaAlien
+class Propulsor
+class MotorParticulas
 class Escudo
+class Colisionador
+class Transform
+class Proyectil
+class BalaJugador
+class BalaAlien
+class Propulsor
+class MotorParticulas
+class Escudo
+class Colisionador
+class Transform
+class Partida
+class Marcador
 class Puntaje
-Class Vida
-Class Personaje
+class Vida
+class Cronometro
+class Nivel
+class MenuPrincipal
+class GameOver
+class Ranking
+class GestorSonido
+class SonidoExplosion
+class SonidoDisparo
 Nave --|> Personaje
-
+Alien --|> Personaje
+AlienGrande --|> Alien
+AlienPequeño --|> Alien
+BalaJugador --|> Proyectil
+BalaAlien --|> Proyectil
+AsteroideGrande --|> Asteroide
+AsteroideMediano --|> Asteroide
+AsteroidePequeño --|> Asteroide
+Nave *-- Propulsor
+Nave *-- Escudo
+Nave *-- MotorParticulas
+Partida *-- Marcador
+Partida *-- Nivel
+Marcador *-- Puntaje
+Marcador *-- Vida
+Partida o-- Nave
+Partida o-- Asteroide
+Partida o-- Ovni
+Nave o-- BalaJugador
+Alien o-- BalaAlien
+Personaje o-- Colisionador
+Personaje o-- Transform
+GestorSonido o-- SonidoExplosion
+GestorSonido o-- SonidoDisparo
+Partida o-- Cronometro
+Partida o-- GestorSonido
 @enduml
