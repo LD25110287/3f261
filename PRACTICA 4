@@ -1,0 +1,93 @@
+startuml
+
+' --- CLASES BASE Y COMPONENTES ---
+class Transform
+class Colisionador
+abstract class Personaje {
+  + Transform transform
+  + Colisionador colisionador
+}
+
+' --- SISTEMA DE LA NAVE (EL PROTAGONISTA) ---
+class Nave {
+  + int integridad
+  + Reparar(KitReparacion kit)
+  + Disparar(BalaJugador bala)
+}
+class Propulsor
+class Escudo
+class MotorParticulas
+class Satelite
+
+' --- OBJETOS DE INTERACCIÓN (AGREGACIÓN / USA) ---
+class KitReparacion {
+  + int puntosVida
+}
+class PowerUp
+class Proyectil
+class BalaJugador
+class BalaAlien
+
+' --- ENEMIGOS Y OBSTÁCULOS ---
+class Alien
+class AlienGrande
+class AlienPequeño
+class Asteroide
+class AsteroideGrande
+class AsteroideMediano
+class AsteroidePequeño
+class MinaEspacial
+class Ovni
+
+' --- SISTEMA DE JUEGO ---
+class Partida
+class Marcador
+class Puntaje
+class Vida
+class Cronometro
+class Nivel
+class GestorSonido
+class SonidoExplosion
+class SonidoDisparo
+
+' --- RELACIONES ---
+
+' HERENCIA (ES)
+Nave --|> Personaje
+Alien --|> Personaje
+PowerUp --|> Personaje
+MinaEspacial --|> Personaje
+Satelite --|> Personaje
+AlienGrande --|> Alien
+AlienPequeño --|> Alien
+BalaJugador --|> Proyectil
+BalaAlien --|> Proyectil
+AsteroideGrande --|> Asteroide
+AsteroideMediano --|> Asteroide
+AsteroidePequeño --|> Asteroide
+
+' COMPOSICIÓN (TIENE)
+Nave *-- Propulsor
+Nave *-- Escudo
+Nave *-- MotorParticulas
+Partida *-- Marcador
+Partida *-- Nivel
+Marcador *-- Puntaje
+Marcador *-- Vida
+
+' AGREGACIÓN (USA / ACCIÓN OBJETO ENTRADA)
+Nave o-- KitReparacion : "Reparar(kit)"
+Nave o-- Satelite
+Nave o-- PowerUp
+Nave o-- BalaJugador
+Alien o-- BalaAlien
+MinaEspacial o-- Asteroide
+Partida o-- Nave
+Partida o-- Asteroide
+Partida o-- Ovni
+Partida o-- Cronometro
+Partida o-- GestorSonido
+GestorSonido o-- SonidoExplosion
+GestorSonido o-- SonidoDisparo
+
+@enduml
